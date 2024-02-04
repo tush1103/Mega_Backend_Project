@@ -11,7 +11,7 @@ connectDB()
     //server will start now
     app.listen(process.env.PORT || 8000, () => {
       console.log(`Starting server on port ${process.env.PORT}`);
-    }); 
+    });
   })
   .catch(err => {
     console.log("Mongo db connection failed!!! ", err);

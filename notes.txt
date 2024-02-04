@@ -14,7 +14,7 @@ only refresh token is stored in the database and not the access token
 
 // jwt is a bearer token mtlb jo user usko bear karta hai us user ko hum sahi maan lete hai, i.e. ye token jiske bhi pass hai hum usko authenticated maan lenge or data bhej denge ,it is like a key
 
-/middleware :It is those methods/functions/operations that are called BETWEEN processing the Request and sending the Response in your application method.
+/middleware :It is those methods/functions/operations that are called BETWEEN processing the Request and sending the Response in your application method.(jaane se pahle mujhse milte hue jana )
 
 //express.json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object.
 
@@ -55,3 +55,6 @@ i.e. agr user ne koi bhi controller likha hai ki ye data save krdo to usse just 
 //plugins are a tool for reusing logic in multiple schema. Example if you have several models in your database and you want to add a loadedAt property to each model so just create a plugin once and apply it to each schema.
 
 //mongoose-aggregate-paginate is a Mongoose plugin easy to add pagination for aggregates. This plugin can be used in combination with view pagination middleware such as express-paginate
+
+
+Multer is a node. js middleware for handling multipart/form-data , which is primarily used for uploading files.
