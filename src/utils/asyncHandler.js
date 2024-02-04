@@ -1,6 +1,6 @@
-const asyncHandler = requestHanler => {
+const asyncHandler = (requestHandler) => {
   (req, res, next) => {
-    Promise.resolve(requestHanler(req, res, next)).catch(err => next(err));
+    Promise.resolve(requestHandler(req, res, next)).catch(err => next(err)); //next middleware ko execute krdo ,first middleware mei error hai. 
   };
 };
 
