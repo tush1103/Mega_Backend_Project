@@ -5,7 +5,6 @@ class ApiError extends Error {
     stack = "",
     errors = []
   ) {
-    //The error.stack property is a string describing the point in the code at which the Error was instantiated.
     //overriding the constructor of Error class
     super(message);
     this.statusCode = statusCode;
@@ -14,14 +13,12 @@ class ApiError extends Error {
     this.message = message;
     this.success = false;
 
-    if(stack){
-        this.stack = stack;
-    }
-    else{
-        Error.captureStackTrace(this, this.constructor);
+    if (stack) {
+      this.stack = stack;
+    } else {
+      Error.captureStackTrace(this, this.constructor);
     }
   }
 }
 
-
-export {ApiError}
+export { ApiError };

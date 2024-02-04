@@ -1,0 +1,57 @@
+only refresh token is stored in the database and not the access token
+
+
+//Bcrypt is way faster than bcryptjs, although users prefer bcryptjs at npm.
+
+//Bcrypt is among the most popular and safest, one-way hashing functions for passwords.
+
+// For Node.js applications, we have 2 options bcrypt and bcryptjs.
+
+// bcrypt is written in C++ with more than 400.000 downloads per week at npm and 5.1k stars at github.
+
+// bcryptJS is written in Javascript with more than 560.000 downloads per week at npm and 2.3k stars at github.
+// it is optimized bcrypt in plain js with zero dependencies
+
+// jwt is a bearer token mtlb jo user usko bear karta hai us user ko hum sahi maan lete hai, i.e. ye token jiske bhi pass hai hum usko authenticated maan lenge or data bhej denge ,it is like a key
+
+/middleware :It is those methods/functions/operations that are called BETWEEN processing the Request and sending the Response in your application method.
+
+//express.json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object.
+
+//express.urlencoded() is a method inbuilt in express to recognize the incoming Request Object as strings or arrays.
+
+// extended This option allows choosing between parsing the URL-encoded data with the query string library (when false) or the qs library (when true).
+
+
+/sometimes we want so store some files, folders,css files,js files,images like some pdf,images etc in our own server,here public is the folder where we will keep all these files and folders
+//static files dont change when your application is running ,these files are files that clients download as they are from the server.
+
+/cookie parser is used so that using my server I can access and set the cookies of the user's browser
+//only  server can read or remove these secure cookies
+
+
+//The error.stack property is a string describing the point in the code at which the Error was instantiated.
+
+
+//jb bhi hum user ko import kraenge to hume check krna pdega ki hmara password sahi hai ki nahi kuki jo password hmne database mei store kraya hai vo encrypted hai or jo actual password hai vo for e.g. 1234 hai to hum unko directly compare nahi kr skte, so we'll have to use some methods to compare them.
+
+
+
+//direct encryption using bcrypt is not possible hence we take help of mongoose hooks
+/* 
+1. pre hook:
+pre middleware functions are executed one after another, when each middleware calls next.
+i.e. agr user ne koi bhi controller likha hai ki ye data save krdo to usse just pahle aap ye pre hook vala code run kra skte ho(for eg password encrypt kr de.)
+*/
+
+
+//user model mei, we will not write id bcz when we save any user to the mongodb,it generates a unique user id on its own nand save it to the bson data and not in the json data
+
+//videos and images are uploaded on third party services which give us the url which we use in out data models
+
+//in the watchhistory, we will be oushing the ids of all the videos that the user has watched
+
+
+//plugins are a tool for reusing logic in multiple schema. Example if you have several models in your database and you want to add a loadedAt property to each model so just create a plugin once and apply it to each schema.
+
+//mongoose-aggregate-paginate is a Mongoose plugin easy to add pagination for aggregates. This plugin can be used in combination with view pagination middleware such as express-paginate
