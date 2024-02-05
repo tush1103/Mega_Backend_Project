@@ -67,6 +67,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 
 //custom method
 userSchema.methods.generateAccessToken = function () {
+  //Synchronously sign the given payload into a JSON Web Token string payload
   return jwt.sign(
     {
       _id: this._id, //this id is fetched from mongodb
