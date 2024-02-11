@@ -23,7 +23,7 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new ApiError(400, "All fields are required");
   }
 
-  const existingUser = User.findOne({
+  const existingUser = await User.findOne({
     $or: [{ username }, { email }],
   });
   console.log("existing user ", existingUser);
@@ -35,14 +35,20 @@ const registerUser = asyncHandler(async (req, res) => {
   //ye hme path de dege jaha bhi multer ne file ko hmari local storage mei rkha hai
   console.log(req.files);
   const avatarLocalPath = req.files?.avatar[0]?.path;
-  const coverImageLocalPath = req.files?.coverImage[0]?.path;
-
+  // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+  let coverImageLocalPath;
+  if (
+    req.files &&
+    Array.isArray(req.files.coverImage) &&
+    req.files.coverImage.length > 0
+  )
+    coverImageLocalPath = req.files.coverImage[0].path;
   if (!avatarLocalPath) {
     throw new ApiError(400, "Avatar is required");
   }
 
-  const avatar = uploadOnCloudinary(avatarLocalPath);
-  const cloverImage = uploadOnCloudinary(coverImageLocalPath);
+  const avatar = await uploadOnCloudinary(avatarLocalPath);
+  const cloverImage = await uploadOnCloudinary(coverImageLocalPath);
 
   if (!avatar) {
     throw new ApiError(400, "Avatar is required");
@@ -57,17 +63,16 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   //to check if user is created or not
-  const createdUser=await User.findById(user._id).select(
+  const createdUser = await User.findById(user._id).select(
     //kya kya nahi chahiye
     "-password -refreshToken"
-  )
-  if(!createdUser){
-    throw new ApiError(500, "Something went wrong while registering the user")
+  );
+  if (!createdUser) {
+    throw new ApiError(500, "Something went wrong while registering the user");
   }
 
-  return res.status(201).json(
-    new ApiResponse(200,createdUser,"User registered successfully")
-  )
-
+  return res
+    .status(201)
+    .json(new ApiResponse(200, createdUser, "User registered successfully"));
 });
 export { registerUser };

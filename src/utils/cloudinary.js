@@ -21,7 +21,7 @@ const uploadOnCloudinary = async localFilePath => {
       resource_type: "auto",
     });
     //file has been uploaded successfully
-    console.log("file is uploaded successfully ", res.url); //upload hone ke baad jo public url hai vo hme yaha mil jaega
+    fs.unlinkSync(localFilePath) //upload hone ke baad jo public url hai vo hme yaha mil jaega
     return res;
   } catch (error) {
     //if an error comes, we should remove the file from the server too as otherwise corrupted files will remain on the server
